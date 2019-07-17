@@ -1,0 +1,10 @@
+{
+    "PORT": 3000,
+    "MONGODB": {
+        "URL": "mongodb://localhost:27017/app-db"
+    },
+    "USER": {
+        "EMAIL": "admin@root",
+        "PASSWORD": "rootroot"
+    }
+}

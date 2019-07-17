@@ -1,0 +1,36 @@
+# docker-compose.yml
+version: "3"
+services:
+  app:
+    build: .
+    container_name: app
+    restart: always
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      MONGODB_URL: mongodb://mongodb:27017/app-db
+      REDIS_URL: redis://redis
+    command: ["node", "./index.js"]
+    networks:
+      - app-net
+    depends_on:
+      - mongodb
+    ports:
+      - 3000:3000
+    expose:
+      - 3000
+
+  mongodb:
+    container_name: app-mongodb
+    image: mongo:latest
+    hostname: mongodb
+    restart: always
+    networks:
+      - app-net
+    expose:
+      - 27017
+    volumes:
+      - ./data/mongo:/data/db
+
+networks:
+  app-net:
