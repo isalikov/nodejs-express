@@ -1,14 +1,21 @@
 import io from 'socket.io'
 
-import onConnect from './handlers/onConnect'
+import inspect from '../utils/inspect'
+
 import onDisconnect from './handlers/onDisconnect'
+import useAuth from './middlewares/useAuth'
 
 export let connection
 export let socket = io()
 
-export const listen = async http => {
+export const listen = http => {
     socket = io(http)
 
-    connection = await onConnect(socket)
-    onDisconnect(connection)
+    socket.on('connection', connection => {
+        inspect(`ws: ID <${connection.id}> - connected`)
+
+        useAuth(connection)
+
+        onDisconnect(connection)
+    })
 }
