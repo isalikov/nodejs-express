@@ -1,10 +1,9 @@
 # express-boilerplate
 
-- Authentication
 - Express
 - Mongoose
 - Socket.io
-- ES7 syntax
+- Babel7
 
 #### Running
 ```bash
