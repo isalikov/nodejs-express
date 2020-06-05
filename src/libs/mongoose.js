@@ -4,7 +4,7 @@ import double from 'mongoose-double'
 import { promisifyAll } from 'bluebird'
 
 import config from '../config'
-import inspect from '../utils/inspect'
+import { log } from '../utils'
 
 double(mongoose)
 promisifyAll(mongoose)
@@ -21,7 +21,7 @@ function connect() {
         useCreateIndex: true,
         useNewUrlParser: true,
     }).catch(error => {
-        inspect(error)
+        log(error)
 
         retryes--
 

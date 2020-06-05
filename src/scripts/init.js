@@ -1,6 +1,6 @@
 import config from '../config'
 import mongoose from '../libs/mongoose'
-import inspect from '../utils/inspect'
+import { log } from '../utils'
 
 import User from '../models/User'
 
@@ -20,7 +20,7 @@ export default () => {
     mongoose.connection.once('open', () => {
         const { host, name } = mongoose.connection
 
-        inspect(`mongodb: <${host}/${name}> - connected`)
+        log(`mongodb: <${host}/${name}> - connected`)
 
         User.findOne({ email: __EMAIL__ }).then(create)
     })

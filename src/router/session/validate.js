@@ -1,4 +1,4 @@
-import Service, { schema } from '../../services/validate'
+import Service, { schema } from '../../middlewares/validate'
 
 export class Validate {
     static createSessionBody = Service({

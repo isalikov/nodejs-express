@@ -24,6 +24,6 @@ yarn start
 
 #### Environment variables
 ```
-USER_EMAIL = [initial user email] | admin@root - is default
-USER_PASSWORD = [initial user password] | rootroot - is default
+USER_EMAIL = [initial user email] | admin@root
+USER_PASSWORD = [initial user password] | rootroot
 ```

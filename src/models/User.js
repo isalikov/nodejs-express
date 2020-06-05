@@ -2,7 +2,7 @@ import crypt from 'crypto-js'
 import uuid from 'shortid'
 
 import mongoose from '../libs/mongoose'
-import { value as hashValue } from '../utils/random'
+import { random } from '../utils'
 
 const sessionSchema = new mongoose.Schema({
     uuid: {
@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
         type: String,
     },
     hash: {
-        default: hashValue,
+        default: random,
         index: true,
         type: String,
     },

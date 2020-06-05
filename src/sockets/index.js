@@ -1,6 +1,6 @@
 import io from 'socket.io'
 
-import inspect from '../utils/inspect'
+import { log } from '../utils'
 
 import onDisconnect from './handlers/onDisconnect'
 import useAuth from './middlewares/useAuth'
@@ -12,7 +12,7 @@ export const listen = http => {
     socket = io(http)
 
     socket.on('connection', connection => {
-        inspect(`ws: ID <${connection.id}> - connected`)
+        log(`ws: ID <${connection.id}> - connected`)
 
         useAuth(connection)
 

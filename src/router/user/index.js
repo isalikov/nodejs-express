@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { Authorize as authorize } from '../../services/authorize'
+import { Authorize as authorize } from '../../middlewares/authorize'
 import { User as service } from './service'
 
 const router = Router()

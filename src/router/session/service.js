@@ -1,8 +1,7 @@
 import crypt from 'crypto-js'
 
 import User from '../../models/User'
-import { value as hashValue } from '../../utils/random'
-import inspect from '../../utils/inspect'
+import { log, random } from '../../utils'
 
 export class Session {
     static create = async (request, response) => {
@@ -27,7 +26,7 @@ export class Session {
 
         const newSession = {
             source: request.useragent?.source,
-            token: hashValue(),
+            token: random(),
         }
 
         user.sessions?.unshift(newSession)
@@ -37,7 +36,7 @@ export class Session {
 
             return response.status(200).send(newSession.token)
         } catch (error) {
-            inspect(error)
+            log(error)
 
             return response.sendStatus(500)
         }
@@ -62,7 +61,7 @@ export class Session {
 
             response.sendStatus(204)
         } catch (error) {
-            inspect(error)
+            log(error)
 
             return response.sendStatus(500)
         }
@@ -90,7 +89,7 @@ export class Session {
 
             return response.sendStatus(204)
         } catch (error) {
-            inspect(error)
+            log(error)
 
             return response.sendStatus(500)
         }

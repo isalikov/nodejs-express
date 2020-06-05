@@ -1,7 +1,7 @@
-import inspect from '../../utils/inspect'
+import { log } from '../../utils'
 
 export default connection => {
     connection.on('disconnect', reason => {
-        inspect(`ws: ID <${connection.id}> - disconnected | reason: ${reason}`)
+        log(`ws: ID <${connection.id}> - disconnected | reason: ${reason}`)
     })
 }
