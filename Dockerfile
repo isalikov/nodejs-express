@@ -3,11 +3,13 @@ FROM iknpx/archnode
 WORKDIR /usr/src
 COPY . .
 
-RUN yarn && \
-    yarn build && \
+RUN yarn --silent && \
+    yarn babel ./src --out-dir ./out --presets minify && \
+    cp ./src/env.json ./out && \
     rm -rf ./node_modules && \
     yarn --production && \
-    cp -r dist /usr/app && \
+    cp -r out /usr/app && \
     cp -r node_modules /usr/app/node_modules
 
 WORKDIR /usr/app
+CMD ["node", "./index.js"]

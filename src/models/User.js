@@ -1,43 +1,12 @@
-import crypt from 'crypto-js'
-import uuid from 'shortid'
+import mongoose from 'mongoose'
+import { SHA512 } from 'crypto-js'
 
-import mongoose from '../libs/mongoose'
-import { random } from '../utils'
+import userSchema from '../schemas/user'
 
-const sessionSchema = new mongoose.Schema({
-    uuid: {
-        default: uuid.generate,
-        index: true,
-        type: String,
-    },
-    source: String,
-    token: String,
-}, { timestamps: true, _id: false, id: false })
+export function setPassword(value) {
+    this.hash = SHA512(value).toString()
+}
 
-const userSchema = new mongoose.Schema({
-    uuid: {
-        default: uuid.generate,
-        index: true,
-        unique: true,
-        type: String,
-    },
-    email: {
-        index: true,
-        required: true,
-        unique: true,
-        type: String,
-    },
-    hash: {
-        default: random,
-        index: true,
-        type: String,
-    },
-    name: String,
-    sessions: [sessionSchema],
-}, { timestamps: true, id: false })
-
-userSchema.virtual('password').set(function(value) {
-    this.hash = crypt.SHA512(value).toString()
-})
+userSchema.virtual('password').set(setPassword)
 
 export default mongoose.model('user', userSchema)

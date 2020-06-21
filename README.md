@@ -1,29 +1,19 @@
-# express-boilerplate
+# express-rest
 
-- Express
-- Mongoose
-- Socket.io
-- Babel7
+Express.js rest-api boilerplate with authentication layer
 
-#### Running
-```bash
-docker-compose up -d
-```
 
-#### Environment Setup
+### Features
+...
 
-Run services:
-```
-docker-compose -f ./docker-services.yml up -d
-```
+### Requirements
+...
 
-Run application:
-```
-yarn start
-```
+### Environment variables
+...
 
-#### Environment variables
-```
-USER_EMAIL = [initial user email] | admin@root
-USER_PASSWORD = [initial user password] | rootroot
-```
+### Usage
+...
+
+### API
+- [Postman collection](https://www.getpostman.com/collections/b89d387c6a6dae59d0db)

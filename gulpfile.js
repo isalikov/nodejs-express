@@ -4,7 +4,6 @@ const babel = require('gulp-babel')
 const source = gulp.src('./src/**/*.js')
 const dist = gulp.dest('dist')
 
-gulp.task('build', () => source
+gulp.task('dist', () => source
     .pipe(babel())
-    .pipe(dist)
-)
+    .pipe(dist))

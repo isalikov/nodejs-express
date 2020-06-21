@@ -1,0 +1,89 @@
+version: "3"
+
+networks:
+  express-rest-net:
+
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:1.17.9
+    restart: always
+    networks:
+      - express-rest-net
+    volumes:
+      - ./nginx-local:/etc/nginx/conf.d
+    ports:
+      - 80:80
+
+  mongo:
+    container_name: mongo
+    image: mongo:4.2.3
+    restart: always
+    networks:
+      - express-rest-net
+    volumes:
+      - ./data/mongo:/data/db
+    ports:
+      - 27017:27017
+
+  redis:
+    container_name: redis
+    image: redis
+    restart: always
+    networks:
+      - express-rest-net
+    volumes:
+      - ./data/redis:/data
+    ports:
+      - 6379:6379
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    networks:
+      - express-rest-net
+    environment:
+      POSTGRES_USER: sentry
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - ./data/pg:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  sentry:
+    container_name: sentry
+    image: sentry
+    restart: always
+    networks:
+      - express-rest-net
+    env_file:
+      - .env
+    ports:
+      - 9000:9000
+    tty: true
+    stdin_open: true
+
+  cron:
+    container_name: sentry-cron
+    image: sentry
+    command: run cron
+    networks:
+      - express-rest-net
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - redis
+
+  worker:
+    container_name: sentry-worker
+    image: sentry
+    command: run worker
+    networks:
+      - express-rest-net
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - redis
