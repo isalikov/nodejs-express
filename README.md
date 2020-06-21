@@ -2,18 +2,18 @@
 
 Express.js rest-api boilerplate with authentication layer
 
-
-### Features
-...
-
 ### Requirements
-...
+- Node.js ^12
+- MongoDB
+- Redis
 
 ### Environment variables
-...
+`src/env.json` can be overrided by LOCAL_ENV
 
 ### Usage
-...
+- `yarn dist` production build
+- `yarn lint` run eslint
+- `yarn start` development run (nodemon)
 
 ### API
 - [Postman collection](https://www.getpostman.com/collections/b89d387c6a6dae59d0db)
