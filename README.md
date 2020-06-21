@@ -8,7 +8,7 @@ Express.js rest-api boilerplate with authentication layer
 - Redis
 
 ### Environment variables
-`src/env.json` can be overrided by LOCAL_ENV
+`src/env.json` can be overridden by local environment
 
 ### Usage
 - `yarn dist` production build
