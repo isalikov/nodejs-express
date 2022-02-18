@@ -8,6 +8,7 @@
     "dev": "nodemon ./src/server.ts",
     "dist": "tsc",
     "lint": "eslint .",
+    "prepare": "husky install",
     "start": "node ./dist/server.js"
   },
   "husky": {
