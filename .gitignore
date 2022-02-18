@@ -2,22 +2,11 @@
 .DS_Store
 .idea
 
-.env
+.env.local
 
 *.log
 *.pid
 *.pid.lock
-*start*
 
-data
-dist
-logs
-out
-pids
-tmp
-
-node_modules/
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+/dist
+/node_modules
