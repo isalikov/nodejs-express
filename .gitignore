@@ -2,11 +2,10 @@
 .DS_Store
 .idea
 
-.env.local
-
 *.log
 *.pid
 *.pid.lock
 
+.env
 /dist
 /node_modules
