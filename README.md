@@ -1,6 +1,6 @@
 # nodejs-express
 
-Nodejs express template with TypeScript
+Nodejs (TypeScript) Express framework template
 
 ### Requirements
-- Node.js ^16
+- Node.js ^18
