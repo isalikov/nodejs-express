@@ -19,5 +19,5 @@ import http from 'http'
     app.use(morgan(isDevelop ? 'dev' : 'common'))
     app.use(routes)
     server.listen(process.env.PORT)
-    console.log(`${pkg.name}: has been started at http://127.0.0.1:${process.env.PORT}`)
+    console.log(`${pkg.name}: is running on`, Number(process.env.PORT))
 })()
