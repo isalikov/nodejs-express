@@ -6,10 +6,9 @@ import useragent from 'express-useragent'
 import morgan from 'morgan'
 
 import routes from './routes'
-
+import pkg from '../package.json'
 import http from 'http'
-
-const main = async () => {
+;(function main() {
     const isDevelop = process.env.NODE_ENV !== 'production'
 
     const app = express()
@@ -20,6 +19,5 @@ const main = async () => {
     app.use(morgan(isDevelop ? 'dev' : 'common'))
     app.use(routes)
     server.listen(process.env.PORT)
-}
-
-main().catch(console.error)
+    console.log(`${pkg.name}: has been started at http://127.0.0.1:${process.env.PORT}`)
+})()

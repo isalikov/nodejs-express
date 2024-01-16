@@ -1,13 +1,12 @@
-FROM node:16
+FROM node:20
 
 WORKDIR /usr/src
 COPY . .
 
 RUN yarn install && \
     yarn dist && \
-    mkdir -p /usr/app/dist && \
-    cp -r ./dist /usr/app/ && \
-    cp -r ./package.json /usr/app/package.json
+    mkdir -p /usr/app && \
+    cp -r ./dist/* /usr/app/
 
 WORKDIR /usr/app
 
